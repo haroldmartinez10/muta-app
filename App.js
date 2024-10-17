@@ -5,6 +5,7 @@ import CollectionsScreen from "./screens/CollectionsScreen";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { Feather } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
 const App = () => {
   const Tab = createBottomTabNavigator();
@@ -15,15 +16,15 @@ const App = () => {
         screenOptions={{
           headerShown: false,
           tabBarStyle: {
-            height: "10%",
+            height: Platform.OS === "ios" ? 105 : 90,
             backgroundColor: "#171717",
             borderTopWidth: 0,
-            paddingTop: "1%",
+            paddingTop: Platform.OS === "ios" ? "3%" : "1%",
           },
           tabBarActiveTintColor: "#D5ED64",
           tabBarLabelStyle: {
             fontSize: 12,
-            marginBottom: "27%",
+            marginBottom: Platform.OS === "ios" ? "15%" : "27%",
             fontWeight: "bold",
           },
         }}
@@ -34,11 +35,7 @@ const App = () => {
           options={{
             tabBarLabel: "Inicio",
             tabBarIcon: ({ focused, color, size }) => (
-              <Feather
-                name={focused ? "home" : "home"}
-                size={size}
-                color={color}
-              />
+              <Feather name="home" size={size} color={color} />
             ),
           }}
         />
@@ -48,11 +45,7 @@ const App = () => {
           options={{
             tabBarLabel: "Billetera",
             tabBarIcon: ({ focused, color, size }) => (
-              <Feather
-                name={focused ? "credit-card" : "credit-card"}
-                size={size}
-                color={color}
-              />
+              <Feather name="credit-card" size={size} color={color} />
             ),
           }}
         />
@@ -62,11 +55,7 @@ const App = () => {
           options={{
             tabBarLabel: "Recolecciones",
             tabBarIcon: ({ focused, color, size }) => (
-              <Feather
-                name={focused ? "calendar" : "calendar"}
-                size={size}
-                color={color}
-              />
+              <Feather name="calendar" size={size} color={color} />
             ),
           }}
         />
@@ -76,11 +65,7 @@ const App = () => {
           options={{
             tabBarLabel: "Perfil",
             tabBarIcon: ({ focused, color, size }) => (
-              <Feather
-                name={focused ? "user" : "user"}
-                size={size}
-                color={color}
-              />
+              <Feather name="user" size={size} color={color} />
             ),
           }}
         />
